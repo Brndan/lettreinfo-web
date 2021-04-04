@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Lettreinfo</title>
+  <link rel="stylesheet" type="text/css" href="assets/gui.css">
+</head>
+
+<body>
+  <div id="contenu">
+    <div id="sortie">
+      <textarea id="afficheHtml" name="afficheHtml" readonly></textarea>
+    </div>
+    <div id="fichiers">
+      <input type="file" name="TrouveFichier" id="parcourir" value="Parcourir">
+      <input type="text" name="urlFichier" id="urlFichier" placeholder="Cliquez sur Parcourir" disabled>
+    </div>
+    <div id="boutonsActions">
+      <input type="button" name="ConvertitFichier" id="convertir" class="boutons" value="Convertir">
+      <input type="button" name="copier" id="copier" value="Copier" class="boutons">
+      <input type="button" name="apropos" id="apropos" value="À propos" class="boutons">
+    </div>
+    <div id="dragndrop">
+      <img src="assets/img/sud.png">
+    </div>
+
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/string-strip-html/dist/string-strip-html.umd.js"></script>
+  <script src="assets/js/htmlminifier.js"></script>
+  <script src="assets/js/app.js"></script>
+  
+
+</body>
+
+</html>
