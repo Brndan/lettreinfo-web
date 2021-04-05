@@ -77,10 +77,10 @@ async function display(fichierSelectionne) {
 }
 
 function aPropos() {
-    versionLettreinfo = "Lettreinfo version 2.1.0";
+    versionLettreinfo = "Lettreinfo 2021/04/21";
     document.getElementById("afficheHtml").readonly = false;
     document.getElementById("afficheHtml").textContent = versionLettreinfo;
-    document.getElementById("afficheHtml").readonly = false;
+    document.getElementById("afficheHtml").readonly = true;
 }
 
 // Événement pour le bouton "À propos"
@@ -145,15 +145,18 @@ drop_region.addEventListener('drop', (evenement) => {
 
 // Ressource survole la région
 drop_region.addEventListener('dragenter', () => {
-    drop_region.style.borderColor = "blue";
+    drop_region.style.borderColor = "#9ecaed";
+    drop_region.style.boxShadow = "0 0 10px #9ecaed";
 });
 
 // Ressource lâchée sur la région
-/* drop_region.addEventListener('drop', () => {
-    drop_region.style.backgroundColor = "green";
-}); */
+drop_region.addEventListener('drop', () => {
+    drop_region.style.borderColor = "grey";
+    drop_region.style.boxShadow = "unset";
+});
 
 // Le curseur quitte la région
 drop_region.addEventListener('dragexit', () => {
     drop_region.style.borderColor = "grey";
+    drop_region.style.boxShadow = "unset";
 });

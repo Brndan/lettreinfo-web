@@ -46,12 +46,19 @@ body {
 }
 
 #dragndrop {
-    margin : 3%;
+    margin: 3%;
     padding: 3%;
     grid-area: dragndrop;
     border-style: dashed;
     border-color: grey;
     border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#message {
+    color: grey;
 }
 
 #fichiers {
@@ -72,13 +79,13 @@ footer {
     padding: 3px;
 }
 
-footer > a {
+footer>a {
     color: black;
     opacity: 0.9;
     text-decoration-line: none;
 }
 
-footer > a:hover {
+footer>a:hover {
     text-decoration-line: underline;
 }
 
