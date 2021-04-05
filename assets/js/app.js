@@ -3,16 +3,16 @@
 var minify = require('html-minifier').minify;
 const { stripHtml } = stringStripHtml;
 
-function convertirFichier(contenuFichier) {
-    contenuFichier = minifie(contenuFichier);
-    contenuFichier = delTrackers(contenuFichier);
+function fileHandler(fileContent) {
+    fileContent = minify_html(fileContent);
+    fileContent = delTrackers(fileContent);
 
-    document.getElementById("afficheHtml").readonly = false
-    document.getElementById("afficheHtml").textContent = contenuFichier
-    document.getElementById("afficheHtml").readonly = false
+    document.getElementById("display_html").readonly = false
+    document.getElementById("display_html").textContent = fileContent
+    document.getElementById("display_html").readonly = false
 
     let toDownload = document.createElement('a');
-    toDownload.setAttribute('href', 'data:text/html;charset=utf-8,' + encodeURIComponent(contenuFichier));
+    toDownload.setAttribute('href', 'data:text/html;charset=utf-8,' + encodeURIComponent(fileContent));
     toDownload.setAttribute('download', 'lettreinfo.html');
     toDownload.style.display = 'none';
     document.body.appendChild(toDownload);
@@ -21,31 +21,31 @@ function convertirFichier(contenuFichier) {
 }
 
 
-function pressePapier() {
-    let copieTexte = document.querySelector("#afficheHtml");
-    copieTexte.select();
+function toClipBoard() {
+    let TextCopy = document.querySelector("#display_html");
+    TextCopy.select();
     document.execCommand("copy");
 }
 
 
-function delTrackers(contenuFichier) {
+function delTrackers(fileContent) {
     // Retire les balises HTML spécifiées 
     //const stripHtml = require("string-strip-html");
-    contenuFichier = stripHtml(contenuFichier, { onlyStripTags: ["html", "script", "meta", "title"], stripTogetherWithTheirContents: ["script", "title"] }).result
+    fileContent = stripHtml(fileContent, { onlyStripTags: ["html", "script", "meta", "title"], stripTogetherWithTheirContents: ["script", "title"] }).result
     // Retire la Google bar
-    contenuFichier = contenuFichier.replace(/<link.*archivebar-desktop.*$/m, "")
+    fileContent = fileContent.replace(/<link.*archivebar-desktop.*$/m, "")
     // Retire la mention MC_PREVIEW_TEXT qui est lue par les clients de messagerie
-    contenuFichier = contenuFichier.replace(/<span class="mcnPreviewText.*<\/span>/, "")
+    fileContent = fileContent.replace(/<span class="mcnPreviewText.*<\/span>/, "")
     // Retire <!doctype html>
-    contenuFichier = contenuFichier.replace(/<!doctype html>/i, "");
+    fileContent = fileContent.replace(/<!doctype html>/i, "");
     //contenuFichier = contenuFichier.replace(/<a.*Voir ce mail dans votre navigateur<\/a>/, '')
-    return contenuFichier
+    return fileContent
 }
 
-function minifie(contenuFichier) {
+function minify_html(fileContent) {
     //const CleanCSS = require('clean-css');
     //const minify = require('html-minifier').minify;
-    contenuFichier = minify(contenuFichier, {
+    fileContent = minify(fileContent, {
         minifyCSS: false,
         collapseWhitespace: true,
         conservativeCollapse: true,
@@ -57,26 +57,26 @@ function minifie(contenuFichier) {
         removeComments: true,
 
     });
-    return contenuFichier
+    return fileContent;
 }
 
-async function display(fichierSelectionne) {
-    if (fichierSelectionne.name.match(/\.htm$|\.html$/) == null) {
+async function display(selectedFile) {
+    if (selectedFile.name.match(/\.htm$|\.html$/) == null) {
         alert("Il faut entrer un fichier html.");
         return;
     }
-    let text_file = await fichierSelectionne.text();
-    convertirFichier(text_file);
+    let text_file = await selectedFile.text();
+    fileHandler(text_file);
 
-    /* document.getElementById("afficheHtml").readonly = false;
-    document.getElementById("afficheHtml").textContent = text_file;
-    document.getElementById("afficheHtml").readonly = false; */
+    /* document.getElementById("display_html").readonly = false;
+    document.getElementById("display_html").textContent = text_file;
+    document.getElementById("display_html").readonly = false; */
 }
 
 
 // Événement pour le bouton "Copier"
 const pastebin = document.getElementById("copier");
-pastebin.addEventListener("click", pressePapier);
+pastebin.addEventListener("click", toClipBoard);
 
 // Événement pour l’upload avec bouton parcourir
 const upload_button = document.getElementById('parcourir');
@@ -115,8 +115,8 @@ drop_region.addEventListener('dragover', preventDefault, false);
 drop_region.addEventListener('drop', preventDefault, false);
 
 // Récupérer ce qui est droppé
-drop_region.addEventListener('drop', (evenement) => {
-    file = evenement.dataTransfer.files[0];
+drop_region.addEventListener('drop', (event) => {
+    file = event.dataTransfer.files[0];
     display(file);
 }, false);
 

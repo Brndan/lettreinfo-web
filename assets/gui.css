@@ -9,9 +9,9 @@ body {
 
 /* Grille */
 
-#contenu {
+#content {
     display: grid;
-    grid-template-areas: "header header header header" "sortie sortie aide aide" "sortie sortie . dragndrop" "sortie sortie . actions" " ft ft ft ft";
+    grid-template-areas: "header header header header" "output output help help" "output output . dragndrop" "output output . actions" "ft ft ft ft";
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 20px;
     grid-template-rows: 10% repeat(3, minmax(0, 1fr)) 4%;
@@ -41,8 +41,8 @@ body {
     margin-right: 1%;
 }
 
-#sortie {
-    grid-area: sortie;
+#output {
+    grid-area: output;
     text-align: justify;
 }
 
@@ -62,8 +62,8 @@ body {
     color: grey;
 }
 
-#aide {
-    grid-area: aide;
+#help {
+    grid-area: help;
 }
 
 #boutonsActions {
@@ -92,7 +92,7 @@ footer>a:hover {
 
 /* Cadre de texte */
 
-#afficheHtml {
+#display_html {
     box-sizing: border-box;
     display: block;
     /*reset from inline*/
@@ -105,7 +105,7 @@ footer>a:hover {
     border-style: none;
 }
 
-#afficheHtml:focus {
+#display_html:focus {
     outline: none;
 }
 
