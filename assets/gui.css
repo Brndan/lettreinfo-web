@@ -24,7 +24,7 @@ body {
 
     grid-template-columns: repeat(3,minmax(0,1fr));
     gap: 20px;
-    grid-template-rows: 100px repeat(3,minmax(0,1fr)) 100px;
+    grid-template-rows: 10% repeat(3,minmax(0,1fr)) 5%;
     height: 100%;
     overflow: hidden;
 }
