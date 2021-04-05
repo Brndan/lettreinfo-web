@@ -75,11 +75,11 @@ async function display(selectedFile) {
 
 
 // Événement pour le bouton "Copier"
-const pastebin = document.getElementById("copier");
+const pastebin = document.getElementById("copy");
 pastebin.addEventListener("click", toClipBoard);
 
-// Événement pour l’upload avec bouton parcourir
-const upload_button = document.getElementById('parcourir');
+// Événement pour l’upload avec bouton browse
+const upload_button = document.getElementById('browse');
 upload_button.addEventListener("change", () => {
     display(upload_button.files[0]);
 });
