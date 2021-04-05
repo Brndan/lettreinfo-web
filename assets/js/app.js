@@ -9,7 +9,12 @@ function fileHandler(fileContent) {
 
     document.getElementById("display_html").readonly = false
     document.getElementById("display_html").textContent = fileContent
-    document.getElementById("display_html").readonly = false
+    document.getElementById("display_html").readonly = true;
+}
+
+function file_export() {
+
+    fileContent = document.getElementById("display_html").textContent
 
     let toDownload = document.createElement('a');
     toDownload.setAttribute('href', 'data:text/html;charset=utf-8,' + encodeURIComponent(fileContent));
@@ -19,7 +24,6 @@ function fileHandler(fileContent) {
     toDownload.click();
     document.body.removeChild(toDownload);
 }
-
 
 function toClipBoard() {
     let TextCopy = document.querySelector("#display_html");
@@ -82,6 +86,12 @@ pastebin.addEventListener("click", toClipBoard);
 const upload_button = document.getElementById('browse');
 upload_button.addEventListener("change", () => {
     display(upload_button.files[0]);
+});
+
+// Événement pour le bouton "Télécharger"
+const download_button = document.getElementById('download');
+download_button.addEventListener('click', () => {
+    file_export();
 });
 
 // Tous les éléments relatifs au drag ’n drop
