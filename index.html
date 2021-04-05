@@ -10,20 +10,29 @@
 <body>
   <div id="contenu">
     <div id="header">
-        <h1>Convertir la lettre d’info</h1>
+      <h1>Convertir la lettre d’info</h1>
       <img src="assets/img/sud.png">
     </div>
     <div id="sortie">
       <textarea id="afficheHtml" name="afficheHtml" readonly></textarea>
     </div>
-    <div id="fichiers">
+    <div id="aide">
+      <h2>Comment convertir la lettre d’info ?</h2>
+      <ol>
+        <li>Commencez par exporter depuis mailchimp la lettre au format html.</li>
+        <li>Sur cette page, glissez et déposez le fichier sur la zone prévue ou cliquez dessus, et parcourez les
+          fichiers sur votre système.</li>
+        <li>C’est converti ! Si rien n’apparaît, c’est que votre fichier n’est pas au bon format.</li>
+        <li>Vous pouvez télécharger directement le fichier converti, et si vous préférez vous pouvez cliquer sur
+          <code>Copier</code> pour mettre l’intégralité du fichier dans votre presse-papier. Il ne vous restera qu’à le
+          coller dans votre gestionnaire de mails.</li>
+
+      </ol>
     </div>
     <div id="boutonsActions">
       <label for="parcourir" class="boutons">Importer</label>
       <input type="file" name="TrouveFichier" id="parcourir" accept="text/html" value="Parcourir">
-      <input type="button" name="ConvertitFichier" id="convertir" class="boutons" value="Convertir">
       <input type="button" name="copier" id="copier" value="Copier" class="boutons">
-      <input type="button" name="apropos" id="apropos" value="À propos" class="boutons">
     </div>
     <div id="dragndrop">
       <div id="message">Glissez-déposez ou cliquez</div>
@@ -35,7 +44,7 @@
   <script src="https://cdn.jsdelivr.net/npm/string-strip-html/dist/string-strip-html.umd.js"></script>
   <script src="assets/js/htmlminifier.js"></script>
   <script src="assets/js/app.js"></script>
-  
+
 
 </body>
 

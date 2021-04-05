@@ -11,7 +11,7 @@ body {
 
 #contenu {
     display: grid;
-    grid-template-areas: "header header header header" "sortie sortie . fichiers" "sortie sortie . dragndrop" "sortie sortie actions actions" " ft ft ft ft";
+    grid-template-areas: "header header header header" "sortie sortie aide aide" "sortie sortie . dragndrop" "sortie sortie . actions" " ft ft ft ft";
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 20px;
     grid-template-rows: 10% repeat(3, minmax(0, 1fr)) 4%;
@@ -43,6 +43,7 @@ body {
 
 #sortie {
     grid-area: sortie;
+    text-align: justify;
 }
 
 #dragndrop {
@@ -61,8 +62,8 @@ body {
     color: grey;
 }
 
-#fichiers {
-    grid-area: fichiers;
+#aide {
+    grid-area: aide;
 }
 
 #boutonsActions {

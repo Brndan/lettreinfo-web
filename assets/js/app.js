@@ -76,24 +76,10 @@ async function display(fichierSelectionne) {
     document.getElementById("afficheHtml").readonly = false;
 }
 
-function aPropos() {
-    versionLettreinfo = "Lettreinfo 2021/04/21";
-    document.getElementById("afficheHtml").readonly = false;
-    document.getElementById("afficheHtml").textContent = versionLettreinfo;
-    document.getElementById("afficheHtml").readonly = true;
-}
-
-// Événement pour le bouton "À propos"
-const apropos = document.getElementById("apropos");
-apropos.addEventListener("click", aPropos);
 
 // Événement pour le bouton "Copier"
 const pastebin = document.getElementById("copier");
 pastebin.addEventListener("click", pressePapier);
-
-// Événement pour la conversion
-const convert = document.getElementById('convertir');
-convert.addEventListener("click", convertirFichier);
 
 // Événement pour l’upload avec bouton parcourir
 const upload_button = document.getElementById('parcourir');
@@ -139,8 +125,6 @@ drop_region.addEventListener('drop', (evenement) => {
     console.log(evenement.dataTransfer);
     file = evenement.dataTransfer.files[0];
     display(file);
-    /* console.log(drop_region.files[0]);
-    display(drop_region.files[0]); */
 }, false);
 
 // Ressource survole la région
