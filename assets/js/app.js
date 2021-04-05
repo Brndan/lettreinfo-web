@@ -4,6 +4,7 @@ var minify = require('html-minifier').minify;
 const { stripHtml } = stringStripHtml;
 
 function convertirFichier() {
+    console.log("essai");
     let contenuFichier = minifie(document.getElementById("afficheHtml").textContent);
     contenuFichier = delTrackers(contenuFichier);
 
@@ -37,7 +38,8 @@ function delTrackers(contenuFichier) {
     // Retire la mention MC_PREVIEW_TEXT qui est lue par les clients de messagerie
     contenuFichier = contenuFichier.replace(/<span class="mcnPreviewText.*<\/span>/, "")
     // Retire <!doctype html>
-    contenuFichier = contenuFichier.replace(/<!doctype html>/, "")
+    contenuFichier = contenuFichier.replace(/<!doctype html>/, "");
+    contenuFichier = contenuFichier.replace(/<!DOCTYPE html>/, "");
     //contenuFichier = contenuFichier.replace(/<a.*Voir ce mail dans votre navigateur<\/a>/, '')
     return contenuFichier
 }
@@ -83,7 +85,6 @@ upload_button.addEventListener("change", () => {
     console.log(upload_button.files[0]);
     display(upload_button.files[0]);
 });
-
 
 // Tous les éléments relatifs au drag ’n drop
 const drop_region = document.getElementById('dragndrop');
