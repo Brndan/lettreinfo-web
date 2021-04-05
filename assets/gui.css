@@ -4,25 +4,40 @@ body, html {
 }
 
 body {
-    /* background: linear-gradient(to bottom right, #073642, #586e75); */
+    font-family: sans-serif;
 }
-
 
 /* Grille */
 
 #contenu {
     display: grid;
-    grid-template-areas: "header header header"
-                         "sortie . fichiers"
-                         "sortie . dragndrop"
-                         "sortie actions actions"
-                         "ft ft ft";
-
-    grid-template-columns: repeat(3,minmax(0,1fr));
+    grid-template-areas: "header header header" "sortie . fichiers" "sortie . dragndrop" "sortie actions actions" "ft ft ft";
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 20px;
-    grid-template-rows: 10% repeat(3,minmax(0,1fr)) 5%;
+    grid-template-rows: 10% repeat(3, minmax(0, 1fr)) 4%;
     height: 100%;
     overflow: hidden;
+}
+
+#header {
+    grid-area: header;
+    background-color: red;
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.75);
+}
+
+#header>h1 {
+    float: left;
+    margin-left: 1%;
+    color: white;
+    font-family: Boogaloo, sans-serif;
+    font-size: 2.5em;
+}
+
+#header>img {
+    float: right;
+    max-height: 80%;
+    margin-top: 0.5%;
+    margin-right: 1%;
 }
 
 #sortie {
@@ -45,19 +60,22 @@ body {
 
 footer {
     grid-area: ft;
+    background-color: red;
+    box-shadow: 0px -3px 3px 0px rgba(0, 0, 0, 0.75);
 }
 
 /* Cadre de texte */
 
 #afficheHtml {
-    box-sizing:border-box;
-    display:block;/*reset from inline*/
-    height: 100%; 
+    box-sizing: border-box;
+    display: block;
+    /*reset from inline*/
+    height: 100%;
     width: 100%;
     resize: none;
     background-color: inherit;
     /* color: white; */
-    opacity: 0.5;
+    opacity: 0.75;
     border-style: none;
 }
 
@@ -65,9 +83,7 @@ footer {
     outline: none;
 }
 
-
 /* Boutons d’action */
-
 
 .boutons {
     color: white;
@@ -78,7 +94,6 @@ footer {
     margin-top: 1em;
     transition-duration: 0.4s;
     font-size: 14pt;
-    font-family: sans-serif;
 }
 
 .boutons:hover {
@@ -89,7 +104,6 @@ footer {
 .boutons:focus {
     outline: none;
 }
-
 
 #parcourir {
     display: none;
