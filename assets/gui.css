@@ -7,14 +7,10 @@ body {
     background: linear-gradient(to bottom right, #073642, #586e75);
 }
 
-/* #fichiers {
-    margin-bottom: 2%;
-} */
 
 /* Grille */
 
 #contenu {
-   /*  height: 100%; */
     display: grid;
     grid-template-areas: "header header header"
                          "sortie . fichiers"
@@ -97,72 +93,4 @@ footer {
 
 #parcourir {
     display: none;
-}
-
-
-
-/* #sortie {
-    grid-area: sortie;
-}
-
-fichiers{
-    grid-area: fichiers;
-    align-self: center;
-} */
-
-/* #urlFichier {
-    float: left;
-    margin-left: 2%;
-    margin-right: 2%;
-    margin-top: auto;
-    color: grey;
-    background: whitesmoke;
-    border: none;
-    border-radius: 1.5em;
-    padding: 10px;
-    margin-top: 1em;
-    transition-duration: 0.4s;
-    font-size: 14pt;
-} */
-
-/* #parcourir {
-    margin-right: 2%;
-    margin-top: auto;
-} */
-
-
-
-/* #boutonsActions {
-    grid-area: boutons;
-    background-color: inherit;
-} 
-
-#dragndrop {
-    grid-area: dragndrop;
-     background-color: coral; 
-}
- */
- /* #boutonsActions > input {
-     display: block;
- }
- */
-
-/* #sortie > textarea:focus {
-    outline: none;
-} */
-
-/* #parcourir {
-    color: white;
-    background: red;
-    border: none;
-    border-radius: 1.5em;
-    padding: 10px;
-    margin-top: 1em;
-    transition-duration: 0.4s;
-    font-size: 14pt;
-} */
-
-/* #parcourir:hover {
-    position: relative;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 1);
 }
