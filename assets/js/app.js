@@ -1,10 +1,7 @@
 
-
+// Imports
 var minify = require('html-minifier').minify;
 const { stripHtml } = stringStripHtml;
-
-
-
 
 function convertirFichier() {
     let contenuFichier = minifie(document.getElementById("afficheHtml").textContent);
@@ -23,12 +20,12 @@ function convertirFichier() {
     document.body.removeChild(toDownload);
 }
 
+
 function pressePapier() {
     let copieTexte = document.querySelector("#afficheHtml");
     copieTexte.select();
     document.execCommand("copy");
 }
-
 
 
 function delTrackers(contenuFichier) {
@@ -64,7 +61,6 @@ function minifie(contenuFichier) {
 }
 
 async function display(fichierSelectionne) {
-    //let fichierSelectionne = element.files[0];
     if (fichierSelectionne.name.match(/\.htm$|\.html$/) == null) {
         alert("Il faut entrer un fichier html.");
         return;
@@ -89,7 +85,7 @@ upload_button.addEventListener("change", () => {
 });
 
 
-// 
+// Tous les éléments relatifs au drag ’n drop
 const drop_region = document.getElementById('dragndrop');
 
 // Cliquer sur la zone de dragndrop déclenche le sélecteur de fichier
@@ -114,7 +110,7 @@ function preventDefault(event) {
     event.preventDefault();
     event.stopPropagation();
 }
- 
+
 drop_region.addEventListener('dragenter', preventDefault, false);
 drop_region.addEventListener('dragleave', preventDefault, false);
 drop_region.addEventListener('dragover', preventDefault, false);
