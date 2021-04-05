@@ -21,8 +21,9 @@ body {
 
 #header {
     grid-area: header;
-    background-color: red;
+    background-color: rgb(215, 0, 0);
     box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.75);
+    padding: auto;
 }
 
 #header>h1 {
@@ -60,8 +61,20 @@ body {
 
 footer {
     grid-area: ft;
-    background-color: red;
+    background-color: rgb(215, 0, 0);
     box-shadow: 0px -3px 3px 0px rgba(0, 0, 0, 0.75);
+    text-align: center;
+    padding: 3px;
+}
+
+footer > a {
+    color: black;
+    opacity: 0.9;
+    text-decoration-line: none;
+}
+
+footer > a:hover {
+    text-decoration-line: underline;
 }
 
 /* Cadre de texte */
