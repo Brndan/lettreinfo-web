@@ -3,9 +3,8 @@
 var minify = require('html-minifier').minify;
 const { stripHtml } = stringStripHtml;
 
-function convertirFichier() {
-    console.log("essai");
-    let contenuFichier = minifie(document.getElementById("afficheHtml").textContent);
+function convertirFichier(contenuFichier) {
+    contenuFichier = minifie(contenuFichier);
     contenuFichier = delTrackers(contenuFichier);
 
     document.getElementById("afficheHtml").readonly = false
@@ -38,8 +37,7 @@ function delTrackers(contenuFichier) {
     // Retire la mention MC_PREVIEW_TEXT qui est lue par les clients de messagerie
     contenuFichier = contenuFichier.replace(/<span class="mcnPreviewText.*<\/span>/, "")
     // Retire <!doctype html>
-    contenuFichier = contenuFichier.replace(/<!doctype html>/, "");
-    contenuFichier = contenuFichier.replace(/<!DOCTYPE html>/, "");
+    contenuFichier = contenuFichier.replace(/<!doctype html>|<!DOCTYPE html>/, "");
     //contenuFichier = contenuFichier.replace(/<a.*Voir ce mail dans votre navigateur<\/a>/, '')
     return contenuFichier
 }
@@ -68,10 +66,11 @@ async function display(fichierSelectionne) {
         return;
     }
     let text_file = await fichierSelectionne.text();
+    convertirFichier(text_file);
 
-    document.getElementById("afficheHtml").readonly = false;
+    /* document.getElementById("afficheHtml").readonly = false;
     document.getElementById("afficheHtml").textContent = text_file;
-    document.getElementById("afficheHtml").readonly = false;
+    document.getElementById("afficheHtml").readonly = false; */
 }
 
 
@@ -82,7 +81,6 @@ pastebin.addEventListener("click", pressePapier);
 // Événement pour l’upload avec bouton parcourir
 const upload_button = document.getElementById('parcourir');
 upload_button.addEventListener("change", () => {
-    console.log(upload_button.files[0]);
     display(upload_button.files[0]);
 });
 
@@ -100,7 +98,6 @@ drop_region.addEventListener('click', () => {
 
 // Événement pour l’upload en drag ’n drop
 drop_region.addEventListener("change", () => {
-    console.log(drop_region.files[0]);
     display(drop_region.files[0]);
 });
 
@@ -119,7 +116,6 @@ drop_region.addEventListener('drop', preventDefault, false);
 
 // Récupérer ce qui est droppé
 drop_region.addEventListener('drop', (evenement) => {
-    console.log(evenement.dataTransfer);
     file = evenement.dataTransfer.files[0];
     display(file);
 }, false);
