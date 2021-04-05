@@ -142,3 +142,18 @@ drop_region.addEventListener('drop', (evenement) => {
     /* console.log(drop_region.files[0]);
     display(drop_region.files[0]); */
 }, false);
+
+// Ressource survole la région
+drop_region.addEventListener('dragenter', () => {
+    drop_region.style.borderColor = "blue";
+});
+
+// Ressource lâchée sur la région
+/* drop_region.addEventListener('drop', () => {
+    drop_region.style.backgroundColor = "green";
+}); */
+
+// Le curseur quitte la région
+drop_region.addEventListener('dragexit', () => {
+    drop_region.style.borderColor = "grey";
+});

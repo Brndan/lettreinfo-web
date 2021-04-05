@@ -46,8 +46,12 @@ body {
 }
 
 #dragndrop {
+    margin : 3%;
+    padding: 3%;
     grid-area: dragndrop;
-    background-color: grey;
+    border-style: dashed;
+    border-color: grey;
+    border-radius: 5px;
 }
 
 #fichiers {
