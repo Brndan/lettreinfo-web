@@ -47,6 +47,7 @@ body {
 
 #dragndrop {
     grid-area: dragndrop;
+    background-color: grey;
 }
 
 #fichiers {

@@ -9,14 +9,14 @@ const { stripHtml } = stringStripHtml;
 function convertirFichier() {
     let contenuFichier = minifie(document.getElementById("afficheHtml").textContent);
     contenuFichier = delTrackers(contenuFichier);
-    
+
     document.getElementById("afficheHtml").readonly = false
     document.getElementById("afficheHtml").textContent = contenuFichier
     document.getElementById("afficheHtml").readonly = false
 
     let toDownload = document.createElement('a');
-    toDownload.setAttribute('href','data:text/html;charset=utf-8,' + encodeURIComponent(contenuFichier));
-    toDownload.setAttribute('download','lettreinfo.html');
+    toDownload.setAttribute('href', 'data:text/html;charset=utf-8,' + encodeURIComponent(contenuFichier));
+    toDownload.setAttribute('download', 'lettreinfo.html');
     toDownload.style.display = 'none';
     document.body.appendChild(toDownload);
     toDownload.click();
@@ -63,8 +63,8 @@ function minifie(contenuFichier) {
     return contenuFichier
 }
 
-async function display() {
-    let fichierSelectionne = document.getElementById('parcourir').files[0];
+async function display(fichierSelectionne) {
+    //let fichierSelectionne = element.files[0];
     if (fichierSelectionne.name.match(/\.htm$|\.html$/) == null) {
         alert("Il faut entrer un fichier html.");
         return;
@@ -95,6 +95,50 @@ pastebin.addEventListener("click", pressePapier);
 const convert = document.getElementById('convertir');
 convert.addEventListener("click", convertirFichier);
 
-// Événement pour l’upload
-const upload = document.getElementById('parcourir');
-upload.addEventListener("change", display);
+// Événement pour l’upload avec bouton parcourir
+const upload_button = document.getElementById('parcourir');
+upload_button.addEventListener("change", () => {
+    console.log(upload_button.files[0]);
+    display(upload_button.files[0]);
+});
+
+
+// 
+const drop_region = document.getElementById('dragndrop');
+
+// Cliquer sur la zone de dragndrop déclenche le sélecteur de fichier
+const fakeInput = document.createElement("input");
+fakeInput.type = "file";
+fakeInput.accept = "text/html";
+fakeInput.multiple = false;
+drop_region.addEventListener('click', () => {
+    fakeInput.click();
+});
+
+// Événement pour l’upload en drag ’n drop
+drop_region.addEventListener("change", () => {
+    console.log(drop_region.files[0]);
+    display(drop_region.files[0]);
+});
+
+
+// Fonction et variables pour empêcher le comportement par défaut des navigateurs :
+// essayer d'afficher le document
+function preventDefault(event) {
+    event.preventDefault();
+    event.stopPropagation();
+}
+ 
+drop_region.addEventListener('dragenter', preventDefault, false);
+drop_region.addEventListener('dragleave', preventDefault, false);
+drop_region.addEventListener('dragover', preventDefault, false);
+drop_region.addEventListener('drop', preventDefault, false);
+
+// Récupérer ce qui est droppé
+drop_region.addEventListener('drop', (evenement) => {
+    console.log(evenement.dataTransfer);
+    file = evenement.dataTransfer.files[0];
+    display(file);
+    /* console.log(drop_region.files[0]);
+    display(drop_region.files[0]); */
+}, false);
